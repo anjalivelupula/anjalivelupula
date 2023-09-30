@@ -1,31 +1,28 @@
 node {
    def mvnHome
   stage('Prepare') {
-      git url: 'https://github.com/kesavkummari/cb9amjava.git', branch: 'main'
+      git url: 'https://github.com/kesavkummari/cb9amjava.git', branch: 'b98am'
       mvnHome = tool 'maven'
    }
   stage ('Clean') {
-      sh "'${mvnHome}/bin/mvn' clean"
+      sh "'${mvnHome}/bin/mvn'  clean"
   }
   stage ('Validate') {
-      sh "'${mvnHome}/bin/mvn' validate"
+      sh "'${mvnHome}/bin/mvn'  validate"
   }
   stage ('Compile') {
-      sh "'${mvnHome}/bin/mvn' compile"
+      sh "'${mvnHome}/bin/mvn'  compile"
   }
   stage ('Test') {
-      sh "'${mvnHome}/bin/mvn' test"
+      sh "'${mvnHome}/bin/mvn'  test"
   }
   stage ('Package') {
-      sh "'${mvnHome}/bin/mvn' package"
+      sh "'${mvnHome}/bin/mvn'  package"
   }
   stage ('Verify') {
-      sh "'${mvnHome}/bin/mvn' verify"
+      sh "'${mvnHome}/bin/mvn'  verify"
   }
   stage ('Install') {
       sh "'${mvnHome}/bin/mvn' install"
-  }
-  stage ('Deploy') {
-      sh "'${mvnHome}/bin/mvn' deploy"
   }
 }
